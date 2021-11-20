@@ -1,0 +1,5 @@
+Django==3.2.5
+psycopg2-binary>=2.8
+petl==1.7.4
+requests==2.25.1
+django-bootstrap4==21.1

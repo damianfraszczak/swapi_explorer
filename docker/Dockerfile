@@ -1,0 +1,16 @@
+FROM python:3.8
+
+ARG RUNNING_USER=swapi
+ENV PYTHONUNBUFFERED=1
+ENV NAME=swapi_explorer
+
+RUN pip install --upgrade pip
+
+RUN adduser --quiet --disabled-password ${RUNNING_USER}
+USER ${RUNNING_USER}
+ENV PATH="/home/${RUNNING_USER}/.local/bin:${PATH}"
+
+WORKDIR /home/${RUNNING_USER}/swapi_explorer/
+COPY --chown=${RUNNING_USER}:${RUNNING_USER} requirements.txt requirements.txt
+RUN pip install --user -r requirements.txt
+COPY --chown=swapi:swapi . .
