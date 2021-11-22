@@ -1,6 +1,6 @@
 # swapi_explorer
 
-It is Start Wars data browser utilizing (SWAPI)[https://swapi.dev/] to load data.
+It is Start Wars data browser utilizing [https://swapi.dev/](SWAPI) to load data.
 
 Currently it only supports browsing star wars characters.
 
@@ -25,9 +25,10 @@ Currently it only supports browsing star wars characters.
 ## How to run
 To run application with Docker you need it installed and configured, please see [this](https://docs.docker.com/engine/install/) for a reference.
 Then execute the following commands:
-1. ```docker-compose build```
-2. ```docker-compose up```
-3. Open browser too see [http://localhost:8000](http://localhost:8000).
+1. Go into `docker` directory with `cd docker`.
+2. `docker-compose build`
+3. `docker-compose up`
+4. Open browser too see [http://localhost:8000](http://localhost:8000).
 
 
 ## Pre-commit Hooks
