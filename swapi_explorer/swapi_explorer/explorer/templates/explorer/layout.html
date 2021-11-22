@@ -1,0 +1,23 @@
+{% extends 'bootstrap4/bootstrap4.html' %}
+{% load bootstrap4 %}
+{% block bootstrap4_title %}Star Wars explorer{% endblock %}
+
+{% block bootstrap4_content %}
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'index' %}">Star Wars data explorer</a>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.url_name == 'people-collections' %}active{% endif %}"
+                       aria-current="page" href="{% url 'people-collections' %}">Characters</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    {% autoescape off %}{% bootstrap_messages %}{% endautoescape %}
+
+    {% block content %}{% endblock %}
+</div>
+
+{% endblock %}

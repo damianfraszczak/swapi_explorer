@@ -1,0 +1,36 @@
+{% extends 'explorer/layout.html' %}
+{% load explorer %}
+{% block content %}
+<h3>Grouping of <a href="{% url details_view_name pk=object.pk %}">{{ object.csv_file | filename}}</a></h3>
+<div class="list-group list-group-horizontal">
+    {% for header in headers %}
+    <a href="{% get_group_by_url value=header request=request %}"
+       class="list-group-item list-group-item-action {% if header in request.get_full_path %}active{% endif %}">
+        {{header }}
+    </a>
+    {% endfor %}
+</div>
+<div>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            {% for header in grouped_data_headers %}
+            <th>
+                {{ header }}
+            </th>
+            {% endfor %}
+        </tr>
+        </thead>
+        <tbody>
+        {% for row in data %}
+        <tr>
+            {% for field in row %}
+            <td>{{ field }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

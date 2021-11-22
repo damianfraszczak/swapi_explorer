@@ -1,0 +1,25 @@
+{% extends 'explorer/layout.html' %}
+{% load bootstrap4 %}
+{% block content %}
+<form method="post" class="form">
+    <input type="hidden" name="per_page" value=""/>
+    {% csrf_token %}
+    {% buttons %}
+    <button type="submit" class="btn btn-primary">Fetch all and ETL</button>
+    {% endbuttons %}
+</form>
+<form method="post" class="form">
+    <input type="hidden" name="per_page" value="True"/>
+    {% csrf_token %}
+    {% buttons %}
+    <button type="submit" class="btn btn-primary">Fetch page and ETL on each page separately</button>
+    {% endbuttons %}
+</form>
+<ul class="list-group">
+    {% for collection in object_list %}
+    <li class="list-group-item">
+        <a href="{% url details_view_name pk=collection.pk %}">{{ collection }}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

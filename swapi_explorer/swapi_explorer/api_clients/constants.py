@@ -1,3 +1,5 @@
+"""API client constants module."""
+
 import datetime
 
-API_CACHE_TIME = datetime.timedelta(hours=1).total_seconds()
+API_CACHE_TIME = datetime.timedelta(minutes=1).total_seconds()

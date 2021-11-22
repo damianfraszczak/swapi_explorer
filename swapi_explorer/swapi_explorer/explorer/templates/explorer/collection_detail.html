@@ -1,0 +1,39 @@
+{% extends 'explorer/layout.html' %}
+{% load explorer %}
+{% block content %}
+<h3>Details of {{ object.csv_file | filename}}</h3>
+<div class="list-group list-group-horizontal">
+    {% for header in headers %}
+    <a href="{% url group_by_view pk=object.pk %}?group_by={{header}}"
+       class="list-group-item list-group-item-action">
+        {{ header }}
+    </a>
+    {% endfor %}
+</div>
+<div>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            {% for header in headers %}
+            <th>
+                {{ header }}
+            </th>
+            {% endfor %}
+        </tr>
+        </thead>
+        <tbody>
+        {% for row in data %}
+        <tr>
+            {% for field in row %}
+            <td>{{ field }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% if has_next %}
+<a href="{% url request.resolver_match.url_name pk=object.pk %}?page={{ next_page }}">Load More</a>
+{% endif %}
+{% endblock %}

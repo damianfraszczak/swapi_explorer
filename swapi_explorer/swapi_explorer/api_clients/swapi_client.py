@@ -2,8 +2,10 @@
 import asyncio
 from typing import Dict, List, Optional, Tuple
 
+import aiohttp
 from aiohttp import ClientSession
-from api_clients.utils import (
+
+from swapi_explorer.api_clients.utils import (
     load_from_url_async_cached,
     load_referenced_fields_async,
 )
@@ -58,7 +60,7 @@ class SWAPIClient:
     async def _get_all_people_data_async(self) -> List:
         url: str = self.get_people_api_url()
         result: List[Dict] = []
-        async with ClientSession() as session:
+        async with ClientSession(connector=aiohttp.TCPConnector(ssl=False)) as session:
             while url:
                 people, url = await self.get_people_data_page_async(
                     url=url, session=session

@@ -15,7 +15,7 @@ services:
       dockerfile: docker/Dockerfile
     command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
-      - ../swapi_explorer/:/home/swapi/swapi_explorer/
+      - ../swapi_explorer/:/home/swapi/swapi_explorer
     environment:
       - RUNNING_USER=${RUNNING_USER}
     ports:

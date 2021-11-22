@@ -4,7 +4,8 @@ from typing import Dict, List
 
 from aiocache import Cache, cached
 from aiohttp import ClientSession
-from api_clients.constants import API_CACHE_TIME
+
+from swapi_explorer.api_clients.constants import API_CACHE_TIME
 
 
 async def load_from_url_async(url: str, session: ClientSession) -> Dict:
